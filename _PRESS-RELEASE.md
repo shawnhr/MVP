@@ -18,27 +18,35 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
-
+MD_Spotter.ly
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+Patients who need information on local doctors, such as their bios and phone numbers.
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+Who doesn't get sick? Everybody gets sick sometimes. MD_Spotter.ly's rather simple and straight forward interface will allow patients to look for the best doctor for them/their loved ones.
 
 ## Problem ##
   > Describe the problem your product solves.
+Everybody gets sick sometimes, but it's not easy to find the right doctor for them.
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+MD_Spotter.ly provides a simple interface to search for doctors and sort them by doctor's specialty, location, and name.
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
-
+There are so many doctor search engines out there, but their overly complicated features frustrates users. I think the main benefit of MD_Spotter.ly over other apps lies in it's simple user interface to search for doctors.
+  
 ## How to Get Started ##
   > Describe how easy it is to get started.
+User enters necessary information to filter the list of doctors.
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+MD_Spotter.ly is awesome because it's really easy to use even for computer newbies and it gets the job done!
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+Are you looking for a doctor in your area today, but you not sure if they are reputable? Don't look further than MD_Spotter.ly. It's what you are looking for! Give it a try today!  

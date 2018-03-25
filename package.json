@@ -1,0 +1,37 @@
+{
+  "name": "mvp",
+  "version": "1.0.0",
+  "description": "mvp",
+  "main": "config.js",
+  "scripts": {
+    "start": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shawnhr/rpt05-mvp.git"
+  },
+  "author": "Shawn Kang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shawnhr/rpt05-mvp/issues"
+  },
+  "homepage": "https://github.com/shawnhr/rpt05-mvp#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "jquery": "^3.3.1",
+    "mongoose": "^5.0.11",
+    "nodemon": "^1.17.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "request": "^2.85.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1"
+  }
+}
