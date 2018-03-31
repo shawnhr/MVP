@@ -12,7 +12,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>MD Spot.ly</h1>
+        <h1>Welcome to MD Spot.ly</h1>
       </div>
     );
   }
