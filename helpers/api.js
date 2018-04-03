@@ -1,24 +1,55 @@
 const request = require("request");
 const config = require("../config.js");
 
-let findDoctor = (keyWord, cb) => {
-  console.log("key:", keyWord);
+let findDoctor = (keyWord, callback) => {
+  console.log("keyWord:", keyWord);
+  var key = "";
+
+  if (keyWord.sort === "") {
+    keyWord.sort = "distance-asc";
+    console.log("k_sort========", keyWord.sort);
+  }
+  if (keyWord.address === "") {
+    keyWord.address = "ca-richmond";
+  }
+  if (keyWord.name === "") {
+    key = `https://api.betterdoctor.com/2016-03-01/doctors?limit=100&specialty_uid=${
+      keyWord.specialty
+    }&location=${keyWord.address}&sort=${keyWord.sort}&user_key=${
+      config.TOKEN
+    }`;
+  }
+  if (keyWord.specialty === "") {
+    key = `https://api.betterdoctor.com/2016-03-01/doctors?limit=100&name=${
+      keyWord.name
+    }&location=${keyWord.address}&sort=${keyWord.sort}&user_key=${
+      config.TOKEN
+    }`;
+  }
+
+  if (keyWord.name === "" && keyWord.specialty === "") {
+    key = `https://api.betterdoctor.com/2016-03-01/doctors?limit=100&location=${
+      keyWord.address
+    }&sort=${keyWord.sort}&user_key=${config.TOKEN}`;
+  }
+
+  if (keyWord.name && keyWord.specialty) {
+    key = `https://api.betterdoctor.com/2016-03-01/doctors?limit=100&name=${
+      keyWord.name
+    }&specialty_uid=${keyWord.specialty}&location=${keyWord.address}&sort=${
+      keyWord.sort
+    }&user_key=${config.TOKEN}`;
+  }
+
   let options = {
-    url:
-      "https://api.betterdoctor.com/2016-03-01/doctors?user_key=2198ace39167f3af36e2d387ffca5c87&location=" +
-      keyWord
-    // url: 'https://api.betterdoctor.com/2016-03-01/doctors?' + keyWord,
-    //  headers: {
-    //    'User-Agent': 'request',
-    //         'user_key': `${config.TOKEN}`
-    // }
+    url: key
   };
 
   request(options, function(err, res, json) {
     if (err) {
-      cb(err, null);
+      callback(error, null);
     }
-    cb(null, JSON.parse(json));
+    callback(null, JSON.parse(json));
   });
 };
 module.exports.findDoctor = findDoctor;
