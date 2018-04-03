@@ -35,10 +35,9 @@ let save = (newModel, cb) => {
   });
 };
 
-let find = (key, sort, cb) => {
+let find = (cb) => {
   model
     .find()
-    .sort({})
     .exec((err, result) => {
       if (err) {
         cb(err, null);
