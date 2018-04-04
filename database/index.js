@@ -19,21 +19,13 @@ let doctorSchema = mongoose.Schema({
   bio: String
 });
 
-// let drop = function() {
-//   db.items.drop();
-// };
-
 let model = mongoose.model("model", doctorSchema);
 
 let save = (datas, cb) => {
-   var profile = datas.profile;
-//if(datas.specialties[0].uid === undefined){datas.specialties[0].name='none'}
+  var profile = datas.profile;
   newData = new model({
     id: datas.practices[0].uid,
     name: profile.first_name + " " + profile.last_name,
-    
-    //specialty: datas.specialties[0].uid,
-    //description: datas.specialties[0].description,
     address:
       datas.practices[0].visit_address.street +
       ", " +
@@ -44,30 +36,36 @@ let save = (datas, cb) => {
     image: profile.image_url,
     bio: profile.bio
   });
-  
+
   newData.save((err, result) => {
-    //console.log('save result', result)
     if (err) {
       cb(err, null);
     } else {
-      console.log("data saved")
+      console.log("data saved");
+      cb(null, result);
+    }
+  });
+};
+let remove = cb => {
+  db.dropDatabase(function(err) {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, "removed");
+    }
+  });
+};
+let find = cb => {
+  model.find().exec((err, result) => {
+    if (err) {
+      cb(err, null);
+    } else {
       cb(null, result);
     }
   });
 };
 
-let find = (cb) => {
-  model
-    .find()
-    .exec((err, result) => {
-      if (err) {
-        cb(err, null);
-      } else {
-        cb(null, result);
-      }
-    });
-};
-
 module.exports.model = model;
+module.exports.remove = remove;
 module.exports.save = save;
 module.exports.find = find;
