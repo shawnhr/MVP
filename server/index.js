@@ -25,12 +25,15 @@ app.post('/items', (req, res) => {
   helpers.findDoctor(req.body.term, (err, result) => {
     if (err) {
       res.status(400)
-      console.log("S_Post_err:", err)
+      //console.log("S_Post_err:", err)
       res.end()
     } else {
-      result.forEach(item => {
-        var model = new db.model(item)
-        db.save(model, (err, result) => {
+      //console.log(result, 'this is result')
+      // result.forEach(item => {
+        //var model = new db.model(item)
+        //if(result.data){
+        for(i = 0; i < result.data.length; i++){
+        db.save(result.data[i], (err, result) => {
           if(err) {
             console.log(err)
             res.status(400)
@@ -40,7 +43,9 @@ app.post('/items', (req, res) => {
             res.end()
           }
         })
-      })
+      }
+    //}
+      // })
     }
   })
 })

@@ -45,14 +45,14 @@ class Search extends React.Component {
         >
           <option value="">--------</option>
           <option value="Cardiology">Cardiology</option>
-          <option value="dermatologist">Dermatologist</option>
-          <option value="emergency-medicine-doctor">Emergency-Medicine-Doctor</option>
-          <option value="family">Family Medicine</option>
+          <option value="dermatologist">Dermatology</option>
+          <option value="emergency-medicine">Emergency Medicine</option>
+          <option value="Family Medicine">Family Medicine</option>
           <option value="Gastroenterology">Gastroenterology</option>
           <option value="internist">Internal Medicine</option>
-          <option value="obstetrics">Obstetrics-Gynecologist</option>
-          <option value="orthopedic">Orthopedic-surgeon</option>
-          <option value="pediatrician">Pediatrician</option>
+          <option value="obstetrics">Obstetrics & Gynecology</option>
+          <option value="orthopedic">Orthopedics</option>
+          <option value="pediatrician">Pediatrics</option>
           <option value="Psychiatry">Psychiatry</option>
           <option value="Pulmonology">Pulmonology</option>
           <option value="Surgery">Surgery</option>

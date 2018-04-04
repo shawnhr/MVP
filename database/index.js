@@ -25,11 +25,32 @@ let doctorSchema = mongoose.Schema({
 
 let model = mongoose.model("model", doctorSchema);
 
-let save = (newModel, cb) => {
-  newModel.save((err, result) => {
+let save = (datas, cb) => {
+   var profile = datas.profile;
+//if(datas.specialties[0].uid === undefined){datas.specialties[0].name='none'}
+  newData = new model({
+    id: datas.practices[0].uid,
+    name: profile.first_name + " " + profile.last_name,
+    
+    //specialty: datas.specialties[0].uid,
+    //description: datas.specialties[0].description,
+    address:
+      datas.practices[0].visit_address.street +
+      ", " +
+      datas.practices[0].visit_address.city +
+      ", " +
+      datas.practices[0].visit_address.state,
+    phone: datas.practices[0].phones[0].number,
+    image: profile.image_url,
+    bio: profile.bio
+  });
+  
+  newData.save((err, result) => {
+    //console.log('save result', result)
     if (err) {
       cb(err, null);
     } else {
+      console.log("data saved")
       cb(null, result);
     }
   });

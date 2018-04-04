@@ -4,7 +4,7 @@ const config = require("../config.js");
 let findDoctor = (keyWord, callback) => {
   console.log("keyWord:", keyWord);
   var key = "";
-
+  keyWord.address = keyWord.address.toLowerCase();
   if (keyWord.sort === "") {
     keyWord.sort = "distance-asc";
     console.log("k_sort========", keyWord.sort);
@@ -13,14 +13,14 @@ let findDoctor = (keyWord, callback) => {
     keyWord.address = "ca-richmond";
   }
   if (keyWord.name === "") {
-    key = `https://api.betterdoctor.com/2016-03-01/doctors?limit=100&specialty_uid=${
+    key = `https://api.betterdoctor.com/2016-03-01/doctors?limit=10&specialty_uid=${
       keyWord.specialty
     }&location=${keyWord.address}&sort=${keyWord.sort}&user_key=${
       config.TOKEN
     }`;
   }
   if (keyWord.specialty === "") {
-    key = `https://api.betterdoctor.com/2016-03-01/doctors?limit=100&name=${
+    key = `https://api.betterdoctor.com/2016-03-01/doctors?limit=10&name=${
       keyWord.name
     }&location=${keyWord.address}&sort=${keyWord.sort}&user_key=${
       config.TOKEN
@@ -28,13 +28,13 @@ let findDoctor = (keyWord, callback) => {
   }
 
   if (keyWord.name === "" && keyWord.specialty === "") {
-    key = `https://api.betterdoctor.com/2016-03-01/doctors?limit=100&location=${
+    key = `https://api.betterdoctor.com/2016-03-01/doctors?limit=10&location=${
       keyWord.address
     }&sort=${keyWord.sort}&user_key=${config.TOKEN}`;
   }
 
   if (keyWord.name && keyWord.specialty) {
-    key = `https://api.betterdoctor.com/2016-03-01/doctors?limit=100&name=${
+    key = `https://api.betterdoctor.com/2016-03-01/doctors?limit=10&name=${
       keyWord.name
     }&specialty_uid=${keyWord.specialty}&location=${keyWord.address}&sort=${
       keyWord.sort
@@ -49,6 +49,7 @@ let findDoctor = (keyWord, callback) => {
     if (err) {
       callback(error, null);
     }
+    //console.log(JSON.parse(json), 'this is json from helper')
     callback(null, JSON.parse(json));
   });
 };
