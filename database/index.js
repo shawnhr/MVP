@@ -46,15 +46,24 @@ let save = (datas, cb) => {
     }
   });
 };
+// let remove = cb => {
+//   db.dropDatabase(function(err) {
+//     if (err) {
+//       cb(err, null);
+//     } else {
+//       cb(null, "removed");
+//     }
+//   });
+// };
 let remove = cb => {
-  db.dropDatabase(function(err) {
+  model.remove({}, err => {
     if (err) {
-      cb(err, null);
-    } else {
-      cb(null, "removed");
+      cd ( err, null)
+    }else {
+      cb (null, "remove");
     }
-  });
-};
+  })
+}
 let find = cb => {
   model.find().exec((err, result) => {
     if (err) {
