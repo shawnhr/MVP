@@ -1,9 +1,5 @@
 import React from "react";
 
-//var remove = require('./~/database-mongo/index.js')
-//var remove = require('/hrsf85-mvp-starter-master/database-mongo');
-//import remove from (__dirname + "/../database-mongo")
-// <input value={this.state.term.specialty} onChange={this.onChange.bind(this, 'specialty')} placeholder="Required"/>
 
 class Search extends React.Component {
   constructor(props) {
@@ -21,7 +17,7 @@ class Search extends React.Component {
   onChange(name, e) {
     const term = this.state.term;
     term[name] = e.target.value;
-    console.log(term);
+    //console.log(term);
     this.setState({
       term: term
     });
@@ -29,35 +25,52 @@ class Search extends React.Component {
 
   search() {
     this.props.onSearch(this.state.term);
+    this.setState({
+      term:  {
+        specialty: "",
+        address: "",
+        name: "",
+        sort: ""
+      }
+    }) 
   }
-
+  
+   
   clear() {
-    db.remove();
+    this.props.remove();
+     this.setState({
+      term:  {
+        specialty: "",
+        address: "",
+        name: "",
+        sort: ""
+      }
+    }) 
   }
   render() {
     return (
       <div>
         <h1>Doctor Search</h1>
-        Specialty:
+        Specialty:{" "}
         <select
           value={this.state.term.specialty}
           onChange={this.onChange.bind(this, "specialty")}
         >
           <option value="">--------</option>
-          <option value="Cardiology">Cardiology</option>
+          <option value="cardiologist">Cardiology</option>
           <option value="dermatologist">Dermatology</option>
-          <option value="emergency-medicine">Emergency Medicine</option>
-          <option value="Family Medicine">Family Medicine</option>
-          <option value="Gastroenterology">Gastroenterology</option>
+          <option value="ear-nose-throat-doctor">Otolaryngology</option>
+          <option value="family-practitioner">Family Medicine</option>
+          <option value="gastroenterologist">Gastroenterology</option>
           <option value="internist">Internal Medicine</option>
-          <option value="obstetrics">Obstetrics & Gynecology</option>
-          <option value="orthopedic">Orthopedics</option>
+          <option value="neurologist">Neurology</option>
+          <option value="obstetrician">Obstetrics & Gynecology</option>
+          <option value="orthopedic-surgeon">Orthopedics</option>
           <option value="pediatrician">Pediatrics</option>
-          <option value="Psychiatry">Psychiatry</option>
-          <option value="Pulmonology">Pulmonology</option>
-          <option value="Surgery">Surgery</option>
+          <option value="psychiatrist">Psychiatry</option>
+          <option value="pulmonologist">Pulmonology</option>
         </select>{" "}
-        City:{" "}
+        Location:{" "}
         <input
           value={this.state.term.address}
           onChange={this.onChange.bind(this, "address")}
@@ -69,7 +82,7 @@ class Search extends React.Component {
           onChange={this.onChange.bind(this, "name")}
           placeholder="optional (ex) John Doh "
         />{" "}
-        SortBy:
+        Sort By: {" "}
         <select
           value={this.state.term.sort}
           onChange={this.onChange.bind(this, "sort")}

@@ -2,12 +2,10 @@ const request = require("request");
 const config = require("../config.js");
 
 let findDoctor = (keyWord, callback) => {
-  console.log("keyWord:", keyWord);
   var key = "";
   keyWord.address = keyWord.address.toLowerCase();
   if (keyWord.sort === "") {
     keyWord.sort = "distance-asc";
-    console.log("k_sort========", keyWord.sort);
   }
   if (keyWord.address === "") {
     keyWord.address = "ca-richmond";
@@ -49,7 +47,6 @@ let findDoctor = (keyWord, callback) => {
     if (err) {
       callback(error, null);
     }
-    //console.log(JSON.parse(json), 'this is json from helper')
     callback(null, JSON.parse(json));
   });
 };

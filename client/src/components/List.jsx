@@ -10,8 +10,6 @@ const List = props => (
             <ListItem
                 key={ind}
                 item={item.name}
-                //specialty={item.specialty}
-                //description={item.description}
                 address={item.address}
                 phone={item.phone}
                 image={item.image}
